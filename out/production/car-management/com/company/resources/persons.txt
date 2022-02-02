@@ -1,0 +1,7 @@
+0,Cosmin,22,1.77,Staff,IT,2000.0
+1,Mihai,32,1.8,Customer,Timisul de Jos,0734506798
+2,Laurentiu,29,1.79,Customer,Callatis 12,0769693767
+3,George,31,9.0,Staff,Constructor,1500.0
+10,Cordea,21,1.74,Staff,soccer,2345.0
+11,Anne,20,1.69,Person,Make up,2500.0
+12,Andrei Sorin,17,1.75,Person,Callatis 12,510615020

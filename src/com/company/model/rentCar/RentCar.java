@@ -1,4 +1,4 @@
-package com.company.model;
+package com.company.model.rentCar;
 
 public class RentCar {
 
@@ -13,6 +13,13 @@ public class RentCar {
     public int getIdCar() {return idCar;}
     public String getFromDate(){return fromDate;}
     public String getToDate(){return toDate;}
+
+    public void setId(int id){this.id = id;}
+    public void setIdPerson(int id){idPerson = id;}
+    public void setIdCar(int id){idCar = id;}
+    public void setFromDate(String from){fromDate = from;}
+    public void setToDate(String to){toDate = to;}
+
 
     public RentCar(){
 
@@ -64,6 +71,6 @@ public class RentCar {
     public boolean equals(Object o){
 
         RentCar rc = (RentCar) o;
-        return this.idPerson == rc.idPerson;
+        return this.id == rc.id;
     }
 }

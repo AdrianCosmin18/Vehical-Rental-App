@@ -2,10 +2,12 @@ package com.company.view;
 
 import com.company.controller.ControllCar;
 import com.company.controller.ControllPerson;
-import com.company.model.*;
-import org.w3c.dom.ls.LSInput;
+import com.company.model.car.Buss;
+import com.company.model.car.Car;
+import com.company.model.person.Customer;
+import com.company.model.person.Person;
+import com.company.model.person.Staff;
 
-import java.awt.*;
 import java.util.Scanner;
 
 public class View {

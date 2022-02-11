@@ -1,5 +1,7 @@
-package com.company.model;
+package com.company.model.person;
 
+
+import com.company.model.person.Person;
 
 public class Customer extends Person {
 

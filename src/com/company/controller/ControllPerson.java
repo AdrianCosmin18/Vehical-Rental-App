@@ -1,14 +1,12 @@
 package com.company.controller;
 
-import com.company.model.Customer;
-import com.company.model.Person;
-import com.company.model.Staff;
+import com.company.model.person.Customer;
+import com.company.model.person.Person;
+import com.company.model.person.Staff;
 
-import javax.naming.ldap.Control;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.PrintWriter;
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -253,4 +251,29 @@ public class ControllPerson {
             System.out.println("\nEroare");
         }
     }
+
+    public Person getPersonByNameAndPassword(String name, String password){
+
+        for(Person p : persons){
+
+            if(p.getName().equals(name)){
+
+                if(p.getType() == "Customer"){
+
+                    Customer c = (Customer) p;
+
+                    if(c.getPassword().equals(password)){return c;}
+                }
+                else if(p.getType() == "Staff"){
+
+                    Staff s = (Staff) p;
+
+                    if(s.getPassword().equals(password)){return s;}
+                }
+            }
+        }
+        return new Person();
+    }
+
+
 }

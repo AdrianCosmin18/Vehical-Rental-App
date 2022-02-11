@@ -1,6 +1,8 @@
-package com.company.model;
+package com.company.model.person;
 
-public class Staff extends Person{
+import com.company.model.person.Person;
+
+public class Staff extends Person {
 
     protected String department;
     protected double salary;

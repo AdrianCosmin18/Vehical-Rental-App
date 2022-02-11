@@ -1,6 +1,6 @@
-package com.company.model;
+package com.company.model.car;
 
-public class Buss extends Car{
+public class Buss extends Car {
 
     private int capacity;
     private double length;

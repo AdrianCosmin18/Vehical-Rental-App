@@ -1,14 +1,12 @@
 package com.company.controller;
 
 
-import com.company.model.Buss;
-import com.company.model.Car;
+import com.company.model.car.Buss;
+import com.company.model.car.Car;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.PrintWriter;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Scanner;
 

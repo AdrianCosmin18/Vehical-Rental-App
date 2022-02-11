@@ -115,7 +115,6 @@ public class ControllPerson {
         persons.remove(indexOf(p));
     }
 
-    ///!!!!
     public void saveToFile(){
 
         try{
@@ -125,7 +124,7 @@ public class ControllPerson {
 
             PrintWriter printWriter= new PrintWriter(fileWriter);
 
-            printWriter.print(this);
+            printWriter.print(this.toString());
 
             printWriter.close();
 
@@ -144,7 +143,6 @@ public class ControllPerson {
         return text;
     }
 
-    //////!!!!!
     public int getNextAvailableID(){
 
         return persons.get(persons.size() - 1).getId() + 1;
@@ -192,12 +190,11 @@ public class ControllPerson {
         return false;
     }
 
-    //!!!!nu merge
     public int getIdByName(String name){
 
         for(Person p : persons){
 
-            if(p.getName() == name){
+            if(p.getName().equals(name)){
 
                 return p.getId();
             }
@@ -205,7 +202,7 @@ public class ControllPerson {
         return -1;
     }
 
-    public void modify_person(int id, String name, int age, double height){
+    public void modifyPerson(int id, String name, int age, double height){
 
         Person pers = getPersonById(id);
 
@@ -219,7 +216,7 @@ public class ControllPerson {
         System.out.println("\nNu exista o persoana cu acest id");
     }
 
-    public void modify_staff(int id, String name, int age, double height, String department, double salary){
+    public void modifyStaff(int id, String name, int age, double height, String department, double salary, String password){
 
         Person p = getPersonById(id);
 
@@ -230,17 +227,15 @@ public class ControllPerson {
             st.setAge(age);
             st.setHeight(height);
             st.setSalary(salary);
+            st.setPassword(password);
 
         }catch(Exception e){
 
             System.out.println("\nEroare");
         }
-
-
-
     }
 
-    public void modify_customer(int id, String name, int age, double height, String address, String phone){
+    public void modifyCustomer(int id, String name, int age, double height, String address, String phone, String password){
 
         Person p = getPersonById(id);
 
@@ -251,6 +246,7 @@ public class ControllPerson {
             c.setAge(age);
             c.setHeight(height);
             c.setPhone(phone);
+            c.setPassword(password);
 
         }catch(Exception e){
 

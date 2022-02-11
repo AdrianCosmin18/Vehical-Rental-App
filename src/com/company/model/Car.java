@@ -6,6 +6,7 @@ public class Car {
     private String brand;
     private String model;
     private int year;
+    private String type;
 
     public Car(){
 
@@ -13,14 +14,26 @@ public class Car {
         this.model = "Anonim";
         this.brand = "Anonim";
         this.year = 0;
+        type = "Car";
     }
 
-    public Car(int id, String brand, String model, int year){
+    public Car(int id, String brand, String model, int year, String type){
 
         this.id = id;
         this.model = model;
         this.brand = brand;
         this.year = year;
+        this.type = "Car";
+    }
+
+    public Car(String prp){
+
+        String[] v =prp.split(",");
+        id = Integer.parseInt(v[0]);
+        brand = v[1];
+        model = v[2];
+        year = Integer.parseInt(v[3]);
+        type = "Car";
     }
 
 //    Settari :
@@ -41,6 +54,8 @@ public class Car {
         return this.year;
     }
 
+    public String getType(){return this.type;}
+
 
     //Gettari:
     public void setId(int id){
@@ -59,21 +74,29 @@ public class Car {
         this.year = year;
     }
 
+    public void setType(String ty){this.type = ty;}
+
     @Override
     public String toString(){
+
+        return id + "," + brand + "," + model + "," + year + "," + type;
+    }
+
+    public String describe(){
+
         String text = "";
         text += "ID : " + id;
         text += "\nBrand : " + brand;
         text += "\nModel : " + model;
         text += "\nYear : " + year;
+        text += "\nType : Car";
         return text;
     }
-
 
     @Override
     public boolean equals(Object o){
         Car car=(Car) o;//downcasting
-        return (this.id == car.getId() && this.brand == car.brand && this.model == car.model && this.year == car.year);
+        return (this.id == car.getId());
 
     }
 

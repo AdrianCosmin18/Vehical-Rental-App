@@ -1,24 +1,73 @@
 package com.company.controller;
 
 
+import com.company.model.Buss;
 import com.company.model.Car;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.PrintWriter;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class ControllCar {
 
 
     private ArrayList<Car> cars;
 
-     public ControllCar(){
+     public ControllCar() {
 
-         cars=  new ArrayList<>();
+         cars = new ArrayList<>();
 
-         cars.add(new Car(0, "Skoda", "Octavia 4", 2021));
-         cars.add(new Car(1,"Wolkswagen", "Passat CC", 2017));
-         cars.add(new Car(2,"Dacia", "Logan MCV", 2018));
+         this.load();
+     }
 
+     public void load()  {
+
+         try {
+
+             File f = new File("C:\\Users\\Cosmin\\MeditatiiInformatica\\MyCode\\JavaCore\\car-management\\src\\com\\company\\resources\\cars.txt");
+             Scanner cin = new Scanner(f);
+             while(cin.hasNextLine()){
+                 String text = cin.nextLine();
+                 switch(text.split(",")[4]){
+
+                     case "Car" : cars.add(new Car(text));
+                         break;
+
+                     case "Buss" : cars.add(new Buss(text));
+                         break;
+                 }
+             }
+         }catch(Exception e){}
+
+     }
+
+     public void saveToFile(){
+
+         try{
+
+             File f = new File("C:\\Users\\Cosmin\\MeditatiiInformatica\\MyCode\\JavaCore\\car-management\\src\\com\\company\\resources\\cars.txt");
+             FileWriter fw = new FileWriter(f);
+             PrintWriter pw = new PrintWriter(fw);
+             pw.print(this);
+             pw.close();
+
+         }catch(Exception e){}
+     }
+
+     @Override
+     public String toString(){
+
+         String text = "";
+         for(Car c : cars){
+
+             text += c + "\n";
+         }
+
+         return text;
      }
 
      public int getNextAvailableID(){
@@ -52,7 +101,7 @@ public class ControllCar {
 
          for(Car c : cars){
 
-             System.out.println("\n" + c);
+             System.out.println("\n" + c.describe());
          }
      }//
 
@@ -98,7 +147,7 @@ public class ControllCar {
          return (new Car());
     }
 
-    public void modify(int id, String brand, String model, int year){
+    public void modifyCar(int id, String brand, String model, int year){
 
         Car c = getCarById(id);
         if(c.getId() != -1){
@@ -111,6 +160,28 @@ public class ControllCar {
         }else{
             System.out.println("Nu exista aceasta masina");
         }
+    }
+
+    public void modifyBuss(int id, String brand, String model, int year, int capacity, double len){
+
+         Car c = getCarById(id);
+
+         if(id != -1){
+
+             try{
+
+                 Buss b = (Buss) c;
+
+                 b.setBrand(brand);
+                 b.setModel(model);
+                 b.setYear(year);
+                 b.setCapacity(capacity);
+                 b.setLength(len);
+             }
+             catch(Exception e){
+                 System.out.println("\nEroare");
+             }
+         }
     }
 
     public int getIdByBrandAndModel(String brand, String model){

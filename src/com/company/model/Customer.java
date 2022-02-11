@@ -5,21 +5,25 @@ public class Customer extends Person {
 
     protected String address;
     protected String phone;
+    protected String password;
 
 
 
     public String getAddress(){return address;}
     public String getPhone(){return phone;}
+    public String getPassword(){return password;}
 
     public void setAddress(String adr){address = adr;}
     public void setPhone(String ph){phone = ph;}
+    public void setPassword(String pass){password = pass;}
 
 
-    public Customer(int id, String name, int age, double h, String type, String address, String phone){
+    public Customer(int id, String name, int age, double h, String type, String address, String phone, String password){
 
         super(id,name,age,h, "Customer");
         this.address = address;
         this.phone = phone;
+        this.password = password;
     }
 
     public Customer(){
@@ -28,6 +32,7 @@ public class Customer extends Person {
         setType("Customer");
         this.address = "None";
         this.phone = "0000000000";
+        password = "1234";
     }
 
     public Customer(String prp){
@@ -41,12 +46,13 @@ public class Customer extends Person {
         setType("Customer");
         address = v[5];
         phone = v[6];
+        password = v[7];
     }
 
     @Override
     public String toString(){
 
-        return (getId() + "," + getName() + "," + getAge() + "," + getHeight() + "," + getType() + "," + address + "," + phone);
+        return (getId() + "," + getName() + "," + getAge() + "," + getHeight() + "," + getType() + "," + address + "," + phone + "," + password);
 
     }
 

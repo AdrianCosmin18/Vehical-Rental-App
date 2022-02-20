@@ -25,6 +25,7 @@ public class ViewLogin  {
 
         System.out.println("Exit : press 1");
         System.out.println("Log In : press 2");
+        System.out.println("Register, new account : press 3");
     }
 
     public void play(){
@@ -45,12 +46,13 @@ public class ViewLogin  {
 
                case 2 : logIn();
                break;
+
+               case 3 : register();
+               break;
            }
         }
 
-
     }
-
 
     public void logIn(){
 
@@ -62,21 +64,53 @@ public class ViewLogin  {
 
         Person p = controllPerson.getPersonByNameAndPassword(name, password);
 
-        if(p.getId() != -1){
-
+        if(p!=null){
              if(p instanceof Customer){
 
-                  new ViewCustomer((Customer) p).play();
+                  new ViewCustomer((Customer) p, controllPerson).play();
              }
              else if (p instanceof Staff){
 
-                 new ViewStaff((Staff) p).play();
+                 new ViewStaff((Staff) p, controllPerson).play();
              }
         }
         else{
-
             System.out.println("Name or password incorrect !!!");
         }
+    }
+
+    public void register(){
+
+        System.out.println("Name : ");
+        String name = read.nextLine();
+
+        while(controllPerson.existsName(name)){
+
+            System.out.println("This name is already taken, try another one");
+            System.out.println("Name : ");
+            name = read.nextLine();
+        }
+
+        System.out.println("Password : ");
+        String password = read.nextLine();
+
+        System.out.println("Age : ");
+        int age = Integer.parseInt(read.nextLine());
+
+        System.out.println("Height : ");
+        double height = Double.parseDouble(read.nextLine());
+
+        System.out.println("Address : ");
+        String address = read.nextLine();
+
+        System.out.println("Phone : ");
+        String phone = read.nextLine();
+
+        Customer c = new Customer(controllPerson.getNextAvailableID(), name, age, height, "Customer", password, address, phone);
+
+        controllPerson.add(c);
+        controllPerson.saveToFile();
+        System.out.println("You just registered :)");
     }
 
 

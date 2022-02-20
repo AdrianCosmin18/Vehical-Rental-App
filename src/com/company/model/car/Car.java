@@ -97,7 +97,6 @@ public class Car {
     public boolean equals(Object o){
         Car car=(Car) o;//downcasting
         return (this.id == car.getId());
-
     }
 
 

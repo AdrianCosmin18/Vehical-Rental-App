@@ -3,5 +3,5 @@
 2,Dacia,Logan MCV,2018,Car
 3,Mercedes,Benz 2,2009,Buss,199,9.7
 4,Daff,A32,2007,Buss,204,10.5
-5,Otokar,Brez,2020,Buss,200,9.6
-6,BMW,Seria 7,2020,Car
+5,Otokar,Bred,2019,Buss,195,9.1
+6,BMW,Seria 5,2022,Car

@@ -19,6 +19,7 @@ public class View {
     private ControllPerson cp;
 
 
+
     public View(){
 
         citeste = new Scanner(System.in);
@@ -186,6 +187,9 @@ public class View {
         System.out.println("Height : ");
         double height = Double.parseDouble(citeste.nextLine());
 
+        System.out.println("Password : ");
+        String pass = citeste.nextLine();
+
 
         if(choice == 1){
 
@@ -195,10 +199,7 @@ public class View {
             System.out.println("Salary : ");
             double salary = Double.parseDouble(citeste.nextLine());
 
-            System.out.println("Password : ");
-            String pass = citeste.nextLine();
-
-            Staff st = new Staff(cp.getNextAvailableID(), name, age, height, "Staff", dept, salary, pass);
+            Staff st = new Staff(cp.getNextAvailableID(), name, age, height, "Staff", pass, dept, salary);
             cp.add(st);
             cp.saveToFile();
         }
@@ -210,10 +211,8 @@ public class View {
             System.out.println("Phone : ");
             String phone = citeste.nextLine();
 
-            System.out.println("Password : ");
-            String pass = citeste.nextLine();
 
-            Customer c = new Customer(cp.getNextAvailableID(), name, age, height, "Customer", address, phone, pass);
+            Customer c = new Customer(cp.getNextAvailableID(), name, age, height, "Customer", pass, address, phone);
             cp.add(c);
             cp.saveToFile();
         }
@@ -241,6 +240,9 @@ public class View {
         System.out.println("Height : ");
         double height = Double.parseDouble(citeste.nextLine());
 
+        System.out.println("Password : ");
+        String pass = citeste.nextLine();
+
         Person p = new Person();
         p = cp.getPersonById(id);
 
@@ -252,10 +254,8 @@ public class View {
             System.out.println("Salary : ");
             double salary = Double.parseDouble(citeste.nextLine());
 
-            System.out.println("Password : ");
-            String pass = citeste.nextLine();
 
-            cp.modifyStaff(id, name, age, height, dept, salary, pass);
+            cp.modifyStaff(id, name, age, height, pass, dept, salary);
 
             cp.saveToFile();
         }
@@ -267,12 +267,10 @@ public class View {
             System.out.println("Phone : ");
             String phone = citeste.nextLine();
 
-            System.out.println("Password : ");
-            String pass = citeste.nextLine();
-
-            cp.modifyCustomer(id, name, age, height, address, phone, pass);
+            cp.modifyCustomer(id, name, age, height, pass, address, phone);
 
             cp.saveToFile();
         }
     }
+
 }

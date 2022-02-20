@@ -18,31 +18,27 @@ public class ControllPerson {
 
         this.persons= new ArrayList<>();
         this.load();
-
-
     }
 
     public void load(){
 
         try{
-            File file = new File("src/com/company/resources/persons.txt");
-            Scanner scanner = new Scanner(file);
-            while (scanner.hasNextLine()){
-                String text=scanner.nextLine();
-                switch (text.split(",")[4]){
-                    case "Staff":this.persons.add(new Staff(text));
+
+            File f = new File("src/com/company/resources/persons.txt");
+            Scanner read = new Scanner(f);
+            while(read.hasNextLine()){
+
+                String text = read.nextLine();
+                switch(text.split(",")[4]){
+
+                    case "Staff":persons.add(new Staff(text));
                     break;
-                    case "Customer":this.persons.add(new Customer(text));
+
+                    case "Customer" : persons.add(new Customer(text));
                     break;
                 }
             }
-
-
-        }catch (Exception e){
-
-        }
-
-
+        }catch (Exception e){}
     }
 
     public Person getPersonById(int id){
@@ -54,7 +50,7 @@ public class ControllPerson {
                 return p;
             }
         }
-        return (new Person());
+        return null;
     }
 
     public void traverse(){
@@ -116,19 +112,17 @@ public class ControllPerson {
     public void saveToFile(){
 
         try{
-            File file = new File("src/com/company/resources/persons.txt");
+            File f = new File("src/com/company/resources/persons.txt");
+            FileWriter fw = new FileWriter(f);
+            PrintWriter pw = new PrintWriter(fw);
+            for(Person p: persons){
 
-            FileWriter fileWriter = new FileWriter(file);
+                pw.print(p.toString());
+                pw.print("\n");
+            }
+            pw.close();
 
-            PrintWriter printWriter= new PrintWriter(fileWriter);
-
-            printWriter.print(this.toString());
-
-            printWriter.close();
-
-        }catch (Exception e){
-
-        }
+        }catch(Exception e){}
     }
 
     @Override
@@ -154,6 +148,18 @@ public class ControllPerson {
                 return true;
         }
 
+        return false;
+    }
+
+    public boolean existsName(String name){
+
+        for(Person p : persons){
+
+            if(p.getName().equals(name)){
+
+                return true;
+            }
+        }
         return false;
     }
 
@@ -200,7 +206,7 @@ public class ControllPerson {
         return -1;
     }
 
-    public void modifyPerson(int id, String name, int age, double height){
+    public void modifyPerson(int id, String name, int age, double height, String password){
 
         Person pers = getPersonById(id);
 
@@ -209,12 +215,13 @@ public class ControllPerson {
             pers.setName(name);
             pers.setAge(age);
             pers.setHeight(height);
+            pers.setPassword(password);
         }
 
         System.out.println("\nNu exista o persoana cu acest id");
     }
 
-    public void modifyStaff(int id, String name, int age, double height, String department, double salary, String password){
+    public void modifyStaff(int id, String name, int age, double height, String password, String department, double salary){
 
         Person p = getPersonById(id);
 
@@ -223,9 +230,9 @@ public class ControllPerson {
             st.setName(name);
             st.setDepartment(department);
             st.setAge(age);
+            st.setPassword(password);
             st.setHeight(height);
             st.setSalary(salary);
-            st.setPassword(password);
 
         }catch(Exception e){
 
@@ -233,7 +240,7 @@ public class ControllPerson {
         }
     }
 
-    public void modifyCustomer(int id, String name, int age, double height, String address, String phone, String password){
+    public void modifyCustomer(int id, String name, int age, double height, String password, String address, String phone){
 
         Person p = getPersonById(id);
 
@@ -256,24 +263,23 @@ public class ControllPerson {
 
         for(Person p : persons){
 
-            if(p.getName().equals(name)){
+            if(p.getName().equals(name) && p.getPassword().equals(password)){
 
-                if(p.getType() == "Customer"){
-
-                    Customer c = (Customer) p;
-
-                    if(c.getPassword().equals(password)){return c;}
-                }
-                else if(p.getType() == "Staff"){
-
-                    Staff s = (Staff) p;
-
-                    if(s.getPassword().equals(password)){return s;}
-                }
+                return p;
             }
         }
-        return new Person();
+        return null;
     }
 
+    public int getNumberOfPersonsWithThisName(String name){
 
+        int count = 0;
+        for(Person p:persons){
+            if(p.getName().equals(name)){
+
+                count++;
+            }
+        }
+        return count;
+    }
 }

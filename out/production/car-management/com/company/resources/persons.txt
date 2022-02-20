@@ -1,7 +1,6 @@
-0,Cosmin,22,1.77,Staff,IT,2000.0,decembrie
-1,Mihai,32,1.8,Customer,Timisul de Jos,0734506798,ianuarie
-2,Laurentiu,29,1.79,Customer,Callatis 12,0769693767,februarie
-3,George,31,9.0,Staff,Constructor,1500.0,martie
-10,Cordea,21,1.74,Staff,soccer,2345.0,aprilie
-11,Anne,20,1.69,Person,Make up,2500.0,mai
-12,Andrei Sorin,17,1.75,Person,Callatis 12,510615020,iunie
+0,Adrian Cosmin,22,1.77,Staff,1234,IT,2000.0
+1,Mihai Antonio,32,1.8,Customer,12345,Timisul de Jos,0734506798
+2,Laurentiu,29,1.79,Customer,februarie,Callatis 12,0769693767
+3,George,31,9.0,Staff,martie,Constructor,1500.0
+10,Andrei Cordea,23,1.74,Staff,aprilie,fotbal,4000.0
+102,Mihai Itu,24,1.75,Customer,mitas,address,phone

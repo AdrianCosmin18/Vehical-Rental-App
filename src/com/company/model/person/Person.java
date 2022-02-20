@@ -8,6 +8,7 @@ public class Person {
     private int age;
     private double height;
     private String type;
+    private String password;
 
     public Person(){
 
@@ -16,15 +17,17 @@ public class Person {
         age = 18;
         height = 1.8;
         type = "Person";
+        password = "1234";
     }
 
-    public Person(int ID, String Name, int Age, double h, String ty){
+    public Person(int ID, String Name, int Age, double h, String ty, String pass){
 
         id = ID;
         name = Name;
         age = Age;
         height = h;
         type = "Person";
+        password = pass;
 
     }
 
@@ -37,6 +40,7 @@ public class Person {
         this.age = Integer.parseInt(proprietati[2]);
         this.height = Double.parseDouble(proprietati[3]);
         this.type = "Person";
+        this.password = proprietati[5];
     }
 
     public int getId(){return id;}
@@ -44,18 +48,20 @@ public class Person {
     public int getAge(){return age;}
     public double getHeight(){return height;}
     public String getType(){return type;}
+    public String getPassword(){return password;}
 
     public void setId(int ID){id = ID;}
     public void setName(String Name){name = Name;}
     public void setAge(int Age){age = Age;}
     public void setHeight(double h){height = h;}
     public void setType(String ty){type = ty;}
+    public void setPassword(String pass){password = pass;}
 
 
     @Override
     public String toString(){
 
-        return (id + "," + name + "," + age + "," + height + "," + type);
+        return (id + "," + name + "," + age + "," + height + "," + type + "," + password);
     }
 
     @Override
@@ -76,8 +82,5 @@ public class Person {
 
         return text;
     }
-
-
-
 
 }
